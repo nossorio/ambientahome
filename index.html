@@ -120,6 +120,22 @@ textarea.in{min-height:70px;resize:vertical}
 .add-line{width:100%;margin-top:12px;border:1.5px dashed var(--sand);background:transparent;border-radius:var(--r);padding:16px;font-weight:700;color:var(--ink2);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;font-size:14px}
 .add-line:hover{background:var(--sand3)}
 
+/* extras */
+.xsec{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--surface2)}
+.xsec-h{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:8px;font-size:13px}
+.xlist{display:flex;flex-direction:column;gap:8px}
+.xrow{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(0,.9fr) minmax(0,1fr) minmax(0,1fr) 104px 38px;gap:8px;align-items:end;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:#fff}
+.xrow.auto{border-style:dashed;border-color:var(--sand);background:var(--sand3)}
+.xrow label.f span{font-size:11px}
+.xrow .in{min-height:38px;padding:7px 9px;font-size:15px}
+.xname{font-weight:600;font-size:13.5px;line-height:1.25;display:flex;flex-direction:column;gap:2px;padding-bottom:4px}
+.xname small{font-weight:500;color:var(--muted);font-size:11.5px}
+.xamt{font-family:var(--head);font-weight:700;text-align:right;padding-bottom:9px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.xbadge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--sand2);color:var(--ink2);border-radius:6px;padding:1px 6px;margin-left:4px;vertical-align:1px}
+.xadd-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;align-items:center}
+.xadd-row select{max-width:420px;flex:1}
+.xempty{font-size:13px;color:var(--muted);padding:4px 2px}
+
 /* summary */
 .summary{position:sticky;top:76px}
 .sum-rows{display:flex;flex-direction:column}
@@ -258,8 +274,8 @@ table.mini td.r,table.mini th.r{text-align:right}
 /* ---------- DOCUMENT (PDF) ---------- */
 .doc{width:760px;background:#fff;color:#1c1c1c;font-family:'Inter',Arial,sans-serif;font-size:11.5px;line-height:1.4;padding:6px 4px}
 .doc *{box-sizing:border-box}
-.doc .dh{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;padding-bottom:14px;border-bottom:2px solid #1c1c1c}
-.doc .dh img{height:62px}
+.doc .dh{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;padding-bottom:10px;border-bottom:2px solid #1c1c1c}
+.doc .dh img{height:54px}
 .doc .dh .tt{text-align:right}
 .doc .dh h2{font-family:'Montserrat',Arial,sans-serif;font-size:21px;font-weight:800;letter-spacing:.02em;margin:0}
 .doc .dh .tag{color:#7a776f;font-size:11px;margin:2px 0 8px}
@@ -268,20 +284,23 @@ table.mini td.r,table.mini th.r{text-align:right}
 .doc .fol span:first-child{border-left:0}
 .doc .fol b{font-weight:800}
 .doc .fol .ov{background:#e5f2ea;color:#1e5a40}
-.doc .boxes{display:grid;grid-template-columns:1.5fr 1fr;gap:12px;margin:14px 0}
+.doc .boxes{display:grid;grid-template-columns:1.5fr 1fr;gap:12px;margin:10px 0}
 .doc .box{border:1px solid #e4dfd5;border-radius:8px;padding:10px 12px;background:#faf8f4}
 .doc .box h5{margin:0 0 6px;font-family:'Montserrat',Arial,sans-serif;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#7a776f;font-weight:700}
 .doc .kv{display:grid;grid-template-columns:78px 1fr;gap:2px 8px}
 .doc .kv b{font-weight:600;color:#3b3f45}
 .doc table.items{width:100%;border-collapse:collapse;margin-top:4px}
-.doc table.items th{background:#1c1c1c;color:#fff;font-size:9.5px;text-transform:uppercase;letter-spacing:.06em;padding:7px 6px;text-align:left;font-weight:700}
+.doc table.items th{background:#1c1c1c;color:#fff;font-size:9.5px;text-transform:uppercase;letter-spacing:.06em;padding:5px 6px;text-align:left;font-weight:700}
 .doc table.items th.r,.doc table.items td.r{text-align:right}
 .doc table.items th.c,.doc table.items td.c{text-align:center}
-.doc table.items td{padding:7px 6px;border-bottom:1px solid #ece7de;vertical-align:top}
+.doc table.items td{padding:5px 6px;border-bottom:1px solid #ece7de;vertical-align:top}
 .doc table.items tr{page-break-inside:avoid}
 .doc table.items td .pm{font-weight:600}
 .doc table.items td .ps{color:#7a776f;font-size:10px}
-.doc .bottom{display:grid;grid-template-columns:1.35fr 1fr;gap:14px;margin-top:14px;page-break-inside:avoid}
+.doc table.items tr.xs td{padding-top:3px;padding-bottom:4px;font-size:10.5px;color:#3b3f45;border-bottom:1px dotted #ece7de}
+.doc table.items tr.xs td.xl{padding-left:14px}
+.doc h5.sec{margin:8px 0 3px;font-family:'Montserrat',Arial,sans-serif;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#7a776f;font-weight:700}
+.doc .bottom{display:grid;grid-template-columns:1.35fr 1fr;gap:14px;margin-top:10px;page-break-inside:avoid}
 .doc .cond{border:1px solid #e4dfd5;border-radius:8px;padding:10px 12px;font-size:10.5px}
 .doc .cond ul{margin:0;padding-left:15px}
 .doc .cond li{margin-bottom:3px}
@@ -298,10 +317,10 @@ table.mini td.r,table.mini th.r{text-align:right}
 .doc .tot .sal{color:#b4443a;font-weight:700}
 .doc .deliv-d{margin-top:10px;display:flex;gap:10px;align-items:center;border:1px solid #cfdcea;background:#eef3f9;border-radius:8px;padding:8px 12px;font-size:10.5px;color:#24456b;page-break-inside:avoid}
 .doc .deliv-d b{font-size:11.5px}
-.doc .sign{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:38px;text-align:center;font-size:10px;color:#7a776f;page-break-inside:avoid}
+.doc .sign{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:26px;text-align:center;font-size:10px;color:#7a776f;page-break-inside:avoid}
 .doc .sign div{border-top:1px solid #1c1c1c;padding-top:6px}
 .doc .sign b{display:block;color:#1c1c1c;font-size:10.5px}
-.doc .foot{margin-top:18px;padding-top:8px;border-top:1px solid #e4dfd5;display:flex;justify-content:space-between;gap:10px;font-size:9.5px;color:#7a776f}
+.doc .foot{margin-top:12px;padding-top:8px;border-top:1px solid #e4dfd5;display:flex;justify-content:space-between;gap:10px;font-size:9.5px;color:#7a776f}
 .doc .slogan{font-style:italic}
 .doc .paid{margin-top:8px;font-size:10px}
 .doc .paid table{width:100%;border-collapse:collapse}
@@ -328,6 +347,10 @@ table.mini td.r,table.mini th.r{text-align:right}
   .g2,.g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}
   .g2 > .span-m,.g3 > .span-m,.g4 > .span-m{grid-column:1/-1}
   .cat-pick{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .xrow{grid-template-columns:repeat(3,minmax(0,1fr)) 38px}
+  .xrow > .xcon{grid-column:1/-2}
+  .xrow > .xdel{grid-column:4;grid-row:1}
+  .xrow > .xamt{grid-column:1/-1;text-align:right;padding:0;border-top:1px dashed var(--line);padding-top:6px}
   .summary .sum-actions{display:none}
   .mbar-fixed{display:flex;position:fixed;left:0;right:0;bottom:calc(58px + var(--safe-b));background:var(--ink);color:#fff;padding:10px 16px;gap:10px;align-items:center;z-index:45;box-shadow:0 -6px 20px rgba(0,0,0,.15)}
   .mbar-fixed small{display:block;font-size:10px;opacity:.7;text-transform:uppercase;letter-spacing:.08em;font-weight:600}
@@ -414,6 +437,19 @@ table.mini td.r,table.mini th.r{text-align:right}
           </div>
         </div>
 
+        <!-- extras generales -->
+        <div class="card" id="cardGenX">
+          <div class="card-h"><h3>Instalación, envío y extras generales</h3><span class="hint" id="genXCount"></span></div>
+          <div class="card-b">
+            <p class="hint" style="margin:0 0 10px">La instalación se calcula sola con las piezas (1-3 pzas o 4+ pzas, doble altura). Puedes cambiar la cantidad o el precio, quitarla, y agregar todos los conceptos que necesites: envío, fascias, día y noche o un concepto libre.</p>
+            <div id="genX"></div>
+            <div class="xadd-row">
+              <select class="in" id="genXAdd"></select>
+              <button class="btn ghost sm hidden" id="btnInstAuto">↺ Volver a instalación automática</button>
+            </div>
+          </div>
+        </div>
+
         <!-- datos del documento -->
         <div class="card">
           <div class="card-h"><h3>Asesor, contacto y datos de pago</h3><span class="hint">Aparecen en el PDF</span></div>
@@ -434,15 +470,9 @@ table.mini td.r,table.mini th.r{text-align:right}
 
         <!-- servicios y condiciones -->
         <div class="card">
-          <div class="card-h"><h3>Instalación, envío y condiciones</h3></div>
+          <div class="card-h"><h3>Descuento, IVA, anticipo y condiciones</h3></div>
           <div class="card-b grid g4">
-            <label class="f span2 span-m"><span>Instalación</span>
-              <select class="in" data-q="installMode"><option value="auto">Automática (según lista: 1-3 pzas / 4+ pzas)</option><option value="manual">Monto manual</option><option value="none">Sin instalación</option></select></label>
-            <label class="f" id="fInstallManual"><span>Monto instalación $</span><input class="in num" data-q="installManual" inputmode="decimal"></label>
-            <label class="f"><span>Envío · costo proveedor $ <em id="shipHint">según C.P.</em></span><input class="in num" data-q="shipping" inputmode="decimal" placeholder="350"></label>
-            <label class="f"><span>Otro cargo (concepto)</span><input class="in" data-q="otherLabel" placeholder="Ej. Motorización"></label>
-            <label class="f"><span>Otro cargo $</span><input class="in num" data-q="otherAmount" inputmode="decimal"></label>
-            <label class="f"><span>Descuento % <em>sobre productos</em></span><input class="in num" data-q="discountPct" inputmode="decimal"></label>
+            <label class="f"><span>Descuento % <em>sobre persianas</em></span><input class="in num" data-q="discountPct" inputmode="decimal"></label>
             <label class="f"><span>IVA</span><select class="in" data-q="ivaMode"><option value="mas">Precios + IVA 16%</option><option value="incluido">Precios con IVA incluido</option><option value="sin">Sin IVA (sin factura)</option></select></label>
             <label class="f"><span>Anticipo %</span><input class="in num" data-q="anticipoPct" inputmode="decimal"></label>
             <label class="f"><span>Entrega (días hábiles) <em>mín – máx</em></span><span style="display:flex;gap:6px"><input class="in num" data-q="delMin" inputmode="numeric"><input class="in num" data-q="delMax" inputmode="numeric"></span></label>
@@ -548,7 +578,7 @@ table.mini td.r,table.mini th.r{text-align:right}
           <label class="f"><span>Entrega máx. (días háb.)</span><input class="in num" data-s="delMax" inputmode="numeric"></label>
           <label class="f"><span>Vigencia (días)</span><input class="in num" data-s="validity" inputmode="numeric"></label>
           <label class="f"><span>IVA por defecto</span><select class="in" data-s="ivaMode"><option value="mas">Precios + IVA 16%</option><option value="incluido">IVA incluido</option><option value="sin">Sin IVA</option></select></label>
-          <label class="f"><span>Envío por defecto (costo) $</span><input class="in num" data-s="shipping" inputmode="decimal"></label>
+          <label class="f"><span>Envío por defecto (costo) $ <em>0 = no agregar</em></span><input class="in num" data-s="shipping" inputmode="decimal"></label>
           <label class="f"><span>Días para dar seguimiento</span><input class="in num" data-s="followDays" inputmode="numeric"></label>
           <label class="f span2 span-m"><span>Forma de pago</span><input class="in" data-s="payTerms"></label>
           <label class="f span2 span-m"><span>Garantía</span><input class="in" data-s="warranty"></label>
@@ -708,6 +738,7 @@ function load(){
   if(!Array.isArray(st.advisors)) st.advisors = String(st.asesores||'Lic. Carlos Mendoza').split(',').map(n=>n.trim()).filter(Boolean).map(name=>({name,phone:'',email:''}));
   if(st.bank && !st.bankName && !st.bankClabe) { st.bankNote=st.bank; }
   priceExtras();
+  S.quotes.forEach(migrateQ); if(S.draft) migrateQ(S.draft);
 }
 function mergeExtras(saved){ return EXTRAS_2026.map(e=>{ const o=saved.find(x=>x.k===e.k)||{}; return Object.assign({},e,{cost: o.cost??e.cost, mk: o.mk??e.mk}); }); }
 let saveT=null, storageOK=true;
@@ -747,13 +778,47 @@ function newLine(prev){
   const line = prev?.line || 'ET';
   const firstOf = S.catalog.find(c=>c.line===line);
   return {id:uid(), area:'', line, item: prev?.item || firstOf?.id || '', color:'', mode:'med', w:'', h:'', m2:'', qty:1,
-          fascia: line==='ST'||line==='SD' ? 'incluida' : 'none', acc:'none', doble:false, mount:'Interior', control:'Derecho', note:'', open:false};
+          extras:[], doble:false, mount:'Interior', control:'Derecho', note:'', open:false};
+}
+/* ---- extras ---- */
+const LINE_X = ['fasciaC','fasciaR','tapasDuo','soportesSky','libre'];
+const GEN_X  = ['envio','inst13','inst4','instDoble','fasciaC','fasciaR','tapasDuo','soportesSky','libre'];
+const INST_K = ['inst13','inst4','instDoble'];
+const XUNITS = ['pza','servicio','ml','m²','juego','visita'];
+function newX(k,qty){ return {id:uid(), k, name:'', unit:k==='libre'?'pza':'', qty: qty==null?'':String(qty), cost:'', price:''}; }
+const isBlank = v => v===''||v==null;
+function evalX(r, autoQty){
+  const e = r.k==='libre'? null : ext(r.k);
+  const mk = e? num(e.mk) : num(S.settings.markup);
+  const qAuto = isBlank(r.qty);
+  const qty = r2(qAuto? (autoQty||0) : num(r.qty));
+  let cost = !isBlank(r.cost)? num(r.cost) : (e? num(e.cost) : NaN);
+  let price = !isBlank(r.price)? num(r.price) : NaN;
+  if(isNaN(price)) price = isNaN(cost)? 0 : r2(cost*(1+mk/100));
+  if(isNaN(cost)) cost = r2(price/(1+mk/100));
+  const label = e? e.name : (r.name||'Concepto libre');
+  return {r, k:r.k, label, unit: e? e.unit : (r.unit||'pza'), qty, qAuto, cost, price, mk, amt:r2(qty*price), costAmt:r2(qty*cost), auto:!!r.auto};
+}
+function xOptLabel(k){ if(k==='libre') return 'Concepto libre (tú pones nombre y precio)'; const e=ext(k); return `${e.name} · ${money0(e.price)}/${e.unit}`; }
+function migrateQ(q){
+  if(!q || q._v>=2) return q;
+  q.extras = Array.isArray(q.extras)? q.extras : [];
+  q.installAuto = !(q.installMode==='none' || q.installMode==='manual');
+  if(q.installMode==='manual' && num(q.installManual)) q.extras.push(Object.assign(newX('libre',1),{name:'Instalación (monto acordado)', unit:'servicio', price:String(num(q.installManual))}));
+  if(num(q.shipping)) q.extras.push(Object.assign(newX('envio',1),{cost:String(num(q.shipping))}));
+  if(num(q.otherAmount)) q.extras.push(Object.assign(newX('libre',1),{name:q.otherLabel||'Otro cargo', unit:'servicio', price:String(num(q.otherAmount))}));
+  (q.lines||[]).forEach(ln=>{ ln.extras = Array.isArray(ln.extras)? ln.extras : [];
+    if(ln.fascia==='fasciaC'||ln.fascia==='fasciaR') ln.extras.push(newX(ln.fascia));
+    if(ln.acc==='tapasDuo'||ln.acc==='soportesSky') ln.extras.push(newX(ln.acc));
+    delete ln.fascia; delete ln.acc; });
+  ['installMode','installManual','shipping','otherLabel','otherAmount'].forEach(k=>delete q[k]);
+  q._v=2; return q;
 }
 function newQuote(){
   const s=S.settings;
   return {id:uid(), folio:'', orderFolio:'', createdAt:'', date:today(), stage:'cotizada',
     client:{name:'',phone:'',email:'',address:'',city:'',source:'WhatsApp',type:'Residencial'},
-    lines:[newLine()], installMode:'auto', installManual:'', shipping: s.shipping||'', otherLabel:'', otherAmount:'',
+    lines:[newLine()], extras: num(s.shipping)? [Object.assign(newX('envio',1),{cost:String(num(s.shipping))})] : [], installAuto:true, _v:2,
     discountPct:'', ivaMode:s.ivaMode, anticipoPct:s.anticipoPct, delMin:s.delMin, delMax:s.delMax, validity:s.validity,
     asesor:(s.advisors[0]||{}).name||'', asesorPhone:(s.advisors[0]||{}).phone||'', asesorEmail:(s.advisors[0]||{}).email||'', notes:s.notes, internal:'',
     payments:[], history:[], anticipoDate:'', installDate:'', nextDate:'', nextNote:'', lostReason:''};
@@ -776,30 +841,31 @@ function calc(q){
     const price = it? num(it.price):0, cost = it? num(it.cost):0;
     const m2 = r2(m2u*qty);
     const amount = r2(m2*price), costAmt = r2(m2*cost);
-    // extras de línea
-    let lx=0, lxc=0, xdesc=[];
-    if(ln.mode!=='m2' && bw>0 && (ln.fascia==='fasciaC'||ln.fascia==='fasciaR')){
-      const e=ext(ln.fascia); const ml=r2(bw*qty); lx+=r2(ml*num(e.price)); lxc+=r2(ml*num(e.cost)); xdesc.push(`${e.name} ${f2(ml)} ml`);
-    }
-    if(ln.acc==='tapasDuo'||ln.acc==='soportesSky'){ const e=ext(ln.acc); lx+=r2(qty*num(e.price)); lxc+=r2(qty*num(e.cost)); xdesc.push(`${e.name} ×${qty}`); }
+    // extras de la ventana (varios)
+    const autoQ = r => { const e=r.k==='libre'?null:ext(r.k); if(e && e.unit==='ml') return (ln.mode!=='m2' && bw>0)? r2(bw*qty) : 0; return qty; };
+    const xrows = (ln.extras||[]).map(r=>evalX(r, autoQ(r)));
+    const lx = r2(xrows.reduce((a,v)=>a+v.amt,0)), lxc = r2(xrows.reduce((a,v)=>a+v.costAmt,0));
     if(ln.doble) dbl+=qty;
     pieces+=qty; prod+=amount; prodCost+=costAmt; extrasAmt+=lx; extrasCost+=lxc;
-    L.push({ln,it,qty,bw,bh,m2u,m2,price,amount,costAmt,lx,lxc,xdesc,warns});
+    L.push({ln,it,qty,bw,bh,m2u,m2,price,amount,costAmt,lx,lxc,xrows,warns});
   }
   prod=r2(prod); extrasAmt=r2(extrasAmt);
   const subProd = r2(prod+extrasAmt);
   const discPct = Math.min(100,Math.max(0,num(q.discountPct)));
-  const discount = r2(subProd*discPct/100);
-  // instalación
-  let install=0, installCost=0, installTxt='';
-  if(q.installMode==='auto' && pieces>0){
-    const std = pieces-dbl, e = pieces<=3? ext('inst13') : ext('inst4'), ed=ext('instDoble');
-    install = r2(std*num(e.price)+dbl*num(ed.price)); installCost=r2(std*num(e.cost)+dbl*num(ed.cost));
-    installTxt = `${std} pza × ${money0(num(e.price))}` + (dbl? ` + ${dbl} doble altura × ${money0(num(ed.price))}`:'');
-  } else if(q.installMode==='manual'){ install=r2(num(q.installManual)); installCost=r2(install/(1+num(ext('inst4').mk)/100)); installTxt='monto acordado'; }
-  const shipCost = r2(num(q.shipping)), shipping = r2(shipCost*(1+num(ext('envio').mk)/100));
-  const other = r2(num(q.otherAmount));
-  const base = r2(subProd-discount+install+shipping+other);
+  const discount = r2(prod*discPct/100);
+  // extras generales: instalación automática + lista
+  const autoRows=[];
+  if(q.installAuto!==false && pieces>0){
+    const std=pieces-dbl;
+    if(std>0) autoRows.push({id:'auto-std', k: pieces<=3?'inst13':'inst4', qty:String(std), cost:'', price:'', auto:true});
+    if(dbl>0) autoRows.push({id:'auto-dbl', k:'instDoble', qty:String(dbl), cost:'', price:'', auto:true});
+  }
+  const G = autoRows.concat(q.extras||[]).map(r=>evalX(r,0));
+  const install = r2(G.filter(v=>INST_K.includes(v.k)).reduce((a,v)=>a+v.amt,0));
+  const installCost = r2(G.filter(v=>INST_K.includes(v.k)).reduce((a,v)=>a+v.costAmt,0));
+  const genAmt = r2(G.reduce((a,v)=>a+v.amt,0)), genCost = r2(G.reduce((a,v)=>a+v.costAmt,0));
+  const other = r2(genAmt-install);
+  const base = r2(subProd-discount+genAmt);
   let iva=0,total=0,net=base;
   if(q.ivaMode==='mas'){ iva=r2(base*0.16); total=r2(base+iva); }
   else if(q.ivaMode==='incluido'){ total=base; net=r2(base/1.16); iva=r2(total-net); }
@@ -809,11 +875,11 @@ function calc(q){
   const saldo = r2(total-anticipo);
   const paid = r2((q.payments||[]).reduce((a,p)=>a+num(p.amount),0));
   const balance = r2(total-paid);
-  const cost = r2(prodCost+extrasCost+installCost+shipCost+other);
+  const cost = r2(prodCost+extrasCost+genCost);
   const profit = r2(net-cost);
   const marginPct = net>0? profit/net : 0;
   const m2Total = r2(L.reduce((a,x)=>a+x.m2,0));
-  return {L,pieces,dbl,prod,extrasAmt,subProd,discPct,discount,install,installTxt,shipping,other,base,iva,total,net,antPct,anticipo,saldo,paid,balance,cost,profit,marginPct,m2Total};
+  return {L,G,pieces,dbl,prod,extrasAmt,subProd,discPct,discount,install,installCost,genAmt,other,base,iva,total,net,antPct,anticipo,saldo,paid,balance,cost,profit,marginPct,m2Total};
 }
 
 /* ---------------- editor ---------------- */
@@ -834,9 +900,9 @@ function bindClient(){
   $$('#segTipo button').forEach(b=>{ b.classList.toggle('on', b.dataset.v===Q.client.type); b.onclick=()=>{ Q.client.type=b.dataset.v; $$('#segTipo button').forEach(x=>x.classList.toggle('on',x===b)); touch(false); }; });
   $$('[data-q]').forEach(el=>{
     el.value = Q[el.dataset.q]??'';
-    el.oninput = el.onchange = ()=>{ Q[el.dataset.q]=el.value; if(el.dataset.q==='installMode') syncInstall(); touch(true); };
+    el.oninput = el.onchange = ()=>{ Q[el.dataset.q]=el.value; touch(true); };
   });
-  syncInstall(); bindDocData();
+  bindDocData();
 }
 function advOf(name){ return S.settings.advisors.find(a=>a.name===name); }
 function bindDocData(){
@@ -852,7 +918,7 @@ function bindDocData(){
   clabeHint();
 }
 function clabeHint(){ const c=String(S.settings.bankClabe||'').replace(/\D/g,''); $$('[data-clabe]').forEach(e=>{ e.textContent = !c? '' : c.length===18? '✓ 18 dígitos' : `${c.length}/18 dígitos`; e.style.color = !c||c.length===18? 'var(--ok)':'var(--bad)'; }); }
-function syncInstall(){ $('#fInstallManual').classList.toggle('hidden', Q.installMode!=='manual'); }
+
 
 function renderEditor(){
   const saved=isSaved(Q);
@@ -866,7 +932,7 @@ function renderEditor(){
   $('#btnAntSide').classList.toggle('hidden', !saved || sIdx(Q.stage)>=ORDER_FROM || Q.stage==='perdida');
   $('#btnDetSide').classList.toggle('hidden', !saved);
   $('#btnDup').classList.toggle('hidden', !saved);
-  bindClient(); renderLines(); renderSummary(); shipHint();
+  migrateQ(Q); bindClient(); renderLines(); renderGenX(); renderSummary();
 }
 
 function renderHead(){ $('#qSub').textContent = isSaved(Q)? `Creada ${fdl(Q.date)} · Asesor: ${Q.asesor||'—'} · los cambios se guardan automáticamente` : 'Captura medidas y tipo de persiana: el total se calcula al instante.'; }
@@ -874,7 +940,7 @@ function lineHTML(ln,i,x){
   const it = x.it;
   const opts = S.catalog.filter(c=>c.line===ln.line).map(c=>`<option value="${esc(c.id)}" ${c.id===ln.item?'selected':''}>${esc(c.model)} · ${money0(c.price)}/m²</option>`).join('');
   const isSheer = ln.line==='ST'||ln.line==='SD';
-  const fasciaOpts = (isSheer? [['incluida','Fascia cuadrada (estándar Sheer)']]:[['none','Sin fascia']]).concat([['fasciaC',`Fascia cuadrada c/forro +${money0(ext('fasciaC').price)}/ml`],['fasciaR',`Fascia redonda +${money0(ext('fasciaR').price)}/ml`]]);
+  const nx=(ln.extras||[]).length;
   return `<div class="line" data-i="${i}">
     <div class="line-h"><span class="n">${i+1}</span><span class="area">${esc(ln.area||'Ventana '+(i+1))} <span class="hint">· ${esc(LMAP[ln.line].short)}${it?' '+esc(it.model):''}</span></span><span class="amt" data-amt>${money(x.amount+x.lx)}</span>
       <button class="btn ghost icon sm" data-del title="Eliminar partida" aria-label="Eliminar partida"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></button></div>
@@ -896,13 +962,17 @@ function lineHTML(ln,i,x){
       </div>
       <div class="line-meta" data-meta>${metaHTML(x)}</div>
       <div class="warns" data-warns>${warnsHTML(x)}</div>
-      <button type="button" class="more-toggle" data-more>${ln.open?'▾':'▸'} Fascia, accesorios, instalación y detalles</button>
+      <button type="button" class="more-toggle" data-more>${ln.open?'▾':'▸'} Extras${nx?` (${nx})`:''}, doble altura y detalles</button>
       <div class="grid g4 ${ln.open?'':'hidden'}" data-morebox>
-        <label class="f span2 span-m"><span>Fascia / galería</span><select class="in" data-f="fascia" ${ln.mode==='m2'?'disabled':''}>${fasciaOpts.map(o=>`<option value="${o[0]}" ${o[0]===ln.fascia?'selected':''}>${esc(o[1])}</option>`).join('')}</select></label>
-        <label class="f span2 span-m"><span>Sistema día y noche</span><select class="in" data-f="acc">${[['none','Ninguno'],['tapasDuo',`Tapas Duo c/soportes +${money0(ext('tapasDuo').price)}/jgo`],['soportesSky',`Soportes Sky +${money0(ext('soportesSky').price)}/jgo`]].map(o=>`<option value="${o[0]}" ${o[0]===ln.acc?'selected':''}>${esc(o[1])}</option>`).join('')}</select></label>
+        <div class="xsec span-all">
+          <div class="xsec-h"><b>Extras de esta ventana</b>${isSheer?'<span class="chip">Fascia cuadrada estándar incluida</span>':''}</div>
+          <div data-lx>${xRowsHTML(x.xrows)}</div>
+          <div class="xadd-row"><select class="in" data-lxadd><option value="">+ Agregar extra a esta ventana…</option>${LINE_X.map(k=>`<option value="${k}">${esc(xOptLabel(k))}</option>`).join('')}</select></div>
+          ${ln.mode==='m2'?'<p class="hint" style="margin:6px 0 0">En modo m² directos la fascia no se calcula sola: captura los metros lineales.</p>':''}
+        </div>
         <label class="f"><span>Montaje</span><select class="in" data-f="mount">${['Interior','Exterior','Techo','Muro'].map(o=>`<option ${o===ln.mount?'selected':''}>${o}</option>`).join('')}</select></label>
         <label class="f"><span>Mando / control</span><select class="in" data-f="control">${['Derecho','Izquierdo','Motorizado'].map(o=>`<option ${o===ln.control?'selected':''}>${o}</option>`).join('')}</select></label>
-        <label class="f span2 span-m" style="justify-content:flex-end"><span>&nbsp;</span><span style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500;min-height:42px"><input type="checkbox" data-f="doble" ${ln.doble?'checked':''} style="width:20px;height:20px;accent-color:#1c1c1c"> Instalación en doble altura (+${money0(ext('instDoble').price)}/pza)</span></label>
+        <label class="f span2 span-m" style="justify-content:flex-end"><span>&nbsp;</span><span style="display:flex;align-items:center;justify-content:flex-start;gap:8px;font-size:14px;font-weight:500;min-height:42px"><input type="checkbox" data-f="doble" ${ln.doble?'checked':''} style="width:20px;height:20px;accent-color:#1c1c1c"> Instalación en doble altura (+${money0(ext('instDoble').price)}/pza)</span></label>
         <label class="f span-all"><span>Nota de la partida <em>sale en el PDF</em></span><input class="in" data-f="note" value="${esc(ln.note)}" placeholder="Ej. Ventana con manija, dejar 1 cm de holgura"></label>
       </div>
     </div></div>`;
@@ -927,34 +997,93 @@ function renderLines(){
     $$('[data-f]',el).forEach(inp=>{
       const f=inp.dataset.f;
       const h=()=>{ ln[f] = inp.type==='checkbox'? inp.checked : inp.value;
-        if(f==='item'||f==='fascia'||f==='acc'||f==='doble'){ touch(true); renderLines(); return; }
+        if(f==='item'||f==='doble'){ touch(true); renderLines(); refreshTotals(); return; }
         touch(true); refreshLine(el,i); };
       inp.addEventListener(inp.tagName==='SELECT'||inp.type==='checkbox'?'change':'input',h);
     });
     $$('[data-line]',el).forEach(b=>b.onclick=()=>{ if(ln.line===b.dataset.line) return; ln.line=b.dataset.line; ln.item=(S.catalog.find(c=>c.line===ln.line)||{}).id||'';
-      const sheer=ln.line==='ST'||ln.line==='SD'; if(sheer && ln.fascia==='none') ln.fascia='incluida'; if(!sheer && ln.fascia==='incluida') ln.fascia='none'; touch(true); renderLines(); });
+      touch(true); renderLines(); });
     $$('[data-mode]',el).forEach(b=>b.onclick=()=>{ ln.mode=b.dataset.mode; touch(true); renderLines(); });
     $('[data-more]',el).onclick=()=>{ ln.open=!ln.open; renderLines(); };
-    $('[data-del]',el).onclick=()=>{ if(Q.lines.length===1){ Q.lines=[newLine()]; } else { if(!confirm('¿Eliminar esta partida?')) return; Q.lines.splice(i,1); } touch(true); renderLines(); };
+    $('[data-del]',el).onclick=()=>{ if(Q.lines.length===1){ Q.lines=[newLine()]; } else { if(!confirm('¿Eliminar esta partida?')) return; Q.lines.splice(i,1); } touch(true); renderLines(); refreshTotals(); };
+    bindXList($('[data-lx]',el), ()=>ln.extras, ()=>{ renderLines(); refreshTotals(); });
+    $('[data-lxadd]',el).onchange=e=>{ const k=e.target.value; if(!k) return; ln.extras.push(newX(k, k==='libre'?1:null)); ln.open=true; touch(true); renderLines(); refreshTotals();
+      const rows=$$(`.line[data-i="${i}"] [data-lx] .xrow`); const last=rows[rows.length-1]; $(k==='libre'?'[data-xf="name"]':'[data-xf="qty"]',last)?.focus(); };
   });
 }
+/* ---- extras rows (shared by window and general lists) ---- */
+function xRowsHTML(evs){
+  if(!evs.length) return '<div class="xempty">Sin extras.</div>';
+  return `<div class="xlist">${evs.map(v=>{ const r=v.r, lib=v.k==='libre';
+    return `<div class="xrow ${v.auto?'auto':''}" data-xid="${esc(r.id)}">
+      <div class="xcon">${lib
+        ? `<label class="f"><span>Concepto libre</span><div style="display:flex;gap:6px"><input class="in" data-xf="name" value="${esc(r.name)}" placeholder="Ej. Ajuste de herrajes"><select class="in" data-xf="unit" style="max-width:96px">${XUNITS.map(u=>`<option ${u===(r.unit||'pza')?'selected':''}>${u}</option>`).join('')}</select></div></label>`
+        : `<div class="xname"><span>${esc(v.label)}${v.auto?' <span class="xbadge">auto</span>':''}</span><small>${esc(v.unit)} · costo ${money0(ext(v.k).cost)} + ${num(v.mk)}%</small></div>`}</div>
+      <label class="f"><span>Cant. (${esc(v.unit)})${v.qAuto&&!v.auto?' · auto':''}</span><input class="in num" data-xf="qty" value="${esc(v.auto? v.qty : r.qty)}" placeholder="${f2(v.qty)}" inputmode="decimal"></label>
+      <label class="f"><span>Costo u.</span><input class="in num" data-xf="cost" value="${esc(r.cost)}" placeholder="${f2(v.cost)}" inputmode="decimal"></label>
+      <label class="f"><span>Precio u. cliente</span><input class="in num" data-xf="price" value="${esc(r.price)}" placeholder="${f2(v.price)}" inputmode="decimal"></label>
+      <div class="xamt" data-xamt>${money(v.amt)}</div>
+      <button type="button" class="btn ghost icon sm xdel" data-xdel aria-label="Quitar extra">✕</button>
+    </div>`; }).join('')}</div>`;
+}
+function bindXList(box, getList, rerender, onAuto){
+  if(!box) return;
+  box.oninput = e=>{ const inp=e.target.closest('[data-xf]'); if(!inp) return; const row=inp.closest('[data-xid]'); let id=row.dataset.xid;
+    if(id.startsWith('auto-')){ id=onAuto(id); }
+    const r=getList().find(x=>x.id===id); if(!r) return; r[inp.dataset.xf]=inp.value; touch(false);
+    if(row.dataset.xid!==id){ const f=inp.dataset.xf, v=inp.value; rerender(); const n=$(`[data-xid="${id}"] [data-xf="${f}"]`); if(n){ n.focus(); n.value=v; } return; }
+    refreshTotals(); };
+  box.onchange = e=>{ if(e.target.matches('select[data-xf]')) refreshTotals(); };
+  box.onclick = e=>{ const b=e.target.closest('[data-xdel]'); if(!b) return; let id=b.closest('[data-xid]').dataset.xid;
+    if(id.startsWith('auto-')){ onAuto(id); id=id==='auto-std'?Q._mat.std:Q._mat.dbl; }
+    const L=getList(); const k=L.findIndex(x=>x.id===id); if(k>=0) L.splice(k,1); touch(true); rerender(); };
+}
+function materializeInstall(){ // convierte la instalación automática en renglones editables
+  const c=calc(Q); Q.installAuto=false; Q._mat={};
+  const autos=c.G.filter(v=>v.auto).map(v=>{ const r=Object.assign(newX(v.k,v.qty)); Q._mat[v.r.id==='auto-std'?'std':'dbl']=r.id; return [v.r.id,r]; });
+  Q.extras = autos.map(a=>a[1]).concat(Q.extras||[]);
+  return Object.fromEntries(autos);
+}
+function renderGenX(c){
+  c=c||calc(Q);
+  $('#genX').innerHTML = xRowsHTML(c.G);
+  $('#genXCount').textContent = c.G.length? `${c.G.length} concepto${c.G.length!==1?'s':''} · ${money(c.genAmt)}` : '';
+  $('#btnInstAuto').classList.toggle('hidden', Q.installAuto!==false);
+  $('#genXAdd').innerHTML = `<option value="">+ Agregar extra o servicio…</option>`+GEN_X.map(k=>`<option value="${k}">${esc(xOptLabel(k))}</option>`).join('');
+  bindXList($('#genX'), ()=>Q.extras, ()=>{ renderGenX(); refreshTotals(); }, id=>{ const m=materializeInstall(); return m[id].id; });
+}
+$('#genXAdd').onchange=e=>{ const k=e.target.value; if(!k) return; const c=calc(Q);
+  const q0 = k==='inst13'||k==='inst4'? Math.max(1,c.pieces-c.dbl) : k==='instDoble'? Math.max(1,c.dbl) : k==='fasciaC'||k==='fasciaR'? 0 : 1;
+  if(INST_K.includes(k) && Q.installAuto!==false){ if(!confirm('Al agregar instalación manual se desactiva la instalación automática (se conserva como renglones editables). ¿Continuar?')){ e.target.value=''; return; } materializeInstall(); }
+  Q.extras.push(newX(k,q0)); touch(true); renderGenX(); refreshTotals();
+  const rows=$$('#genX .xrow'); const last=rows[rows.length-1]; $(k==='libre'?'[data-xf="name"]':'[data-xf="qty"]',last)?.focus(); };
+$('#btnInstAuto').onclick=()=>{ Q.extras=(Q.extras||[]).filter(r=>!INST_K.includes(r.k)); Q.installAuto=true; touch(true); renderGenX(); refreshTotals(); toast('Instalación automática activada'); };
+function refreshTotals(){
+  const c=calc(Q);
+  $$('#lines .line').forEach(el=>{ const x=c.L[+el.dataset.i]; if(!x) return;
+    $('[data-amt]',el).textContent=money(x.amount+x.lx); $('[data-meta]',el).innerHTML=metaHTML(x);
+    x.xrows.forEach(v=>syncXRow(el,v)); });
+  if(!$('#genX').contains(document.activeElement)) renderGenX(c); else c.G.forEach(v=>syncXRow($('#genX'),v));
+  renderSummary(c);
+}
+function syncXRow(scope,v){ const row=scope.querySelector(`[data-xid="${CSS.escape(v.r.id)}"]`); if(!row) return;
+  row.querySelector('[data-xamt]').textContent=money(v.amt);
+  const q=row.querySelector('[data-xf="qty"]'), co=row.querySelector('[data-xf="cost"]'), p=row.querySelector('[data-xf="price"]');
+  if(q) q.placeholder=f2(v.qty); if(co) co.placeholder=f2(v.cost); if(p) p.placeholder=f2(v.price); }
 function refreshLine(el,i){
   const c=calc(Q), x=c.L[i];
-  $('[data-amt]',el).textContent = money(x.amount+x.lx);
-  $('[data-meta]',el).innerHTML = metaHTML(x);
   $('[data-warns]',el).innerHTML = warnsHTML(x);
   $('.area',el).innerHTML = `${esc(x.ln.area||'Ventana '+(i+1))} <span class="hint">· ${esc(LMAP[x.ln.line].short)}${x.it?' '+esc(x.it.model):''}</span>`;
-  renderSummary(c);
+  refreshTotals();
 }
 function renderSummary(c){
   c = c||calc(Q);
   const rows=[];
-  rows.push(['Productos ('+f2(c.m2Total)+' m²)', money(c.prod)]);
-  if(c.extrasAmt) rows.push(['Fascias y accesorios', money(c.extrasAmt)]);
-  if(c.discount) rows.push([`Descuento (${c.discPct}%)`, '−'+money(c.discount),'neg']);
-  if(c.install||Q.installMode!=='none') rows.push(['Instalación'+(c.installTxt?` <span class="hint">· ${esc(c.installTxt)}</span>`:''), money(c.install)]);
-  if(c.shipping) rows.push([`Envío <span class="hint">· costo ${money0(num(Q.shipping))} + ${num(ext('envio').mk)}%</span>`, money(c.shipping)]);
-  if(c.other) rows.push([esc(Q.otherLabel||'Otro cargo'), money(c.other)]);
+  rows.push(['Persianas ('+f2(c.m2Total)+' m²)', money(c.prod)]);
+  if(c.discount) rows.push([`Descuento persianas (${c.discPct}%)`, '−'+money(c.discount),'neg']);
+  if(c.extrasAmt) rows.push([`Extras por ventana <span class="hint">· ${c.L.reduce((a,x)=>a+x.xrows.length,0)} concepto(s)</span>`, money(c.extrasAmt)]);
+  rows.push([`Instalación${Q.installAuto!==false?' <span class="hint">· automática</span>':''}`, money(c.install)]);
+  if(c.other) rows.push([`Envío y extras generales <span class="hint">· ${c.G.filter(v=>!INST_K.includes(v.k)).length} concepto(s)</span>`, money(c.other)]);
   if(Q.ivaMode==='mas'){ rows.push(['Subtotal', money(c.base),'div']); rows.push(['IVA 16%', money(c.iva)]); }
   else if(Q.ivaMode==='incluido'){ rows.push(['Subtotal sin IVA', money(c.net),'div']); rows.push(['IVA 16% (incluido)', money(c.iva)]); }
   $('#sumRows').innerHTML = rows.map(r=>`<div class="sum-row ${r[2]||''}"><span>${r[0]}</span><span>${r[1]}</span></div>`).join('');
@@ -1161,7 +1290,7 @@ function closeDrawer(){ $('#drawer').classList.remove('open'); drawerQ=null; }
 $('#drawer').addEventListener('click',e=>{ if(e.target.id==='drawer') closeDrawer(); });
 function duplicate(q){
   const d=JSON.parse(JSON.stringify(q)); Object.assign(d,{id:uid(), folio:'', orderFolio:'', createdAt:'', date:today(), stage:'cotizada', payments:[], history:[], anticipoDate:'', installDate:'', nextDate:'', nextNote:'', lostReason:''});
-  d.lines.forEach(l=>l.id=uid()); S.draft=d; Q=d; S.ui.editing=null; save(); go('cotizar'); renderEditor(); toast('Copia lista: revisa y guarda para asignar folio');
+  d.lines.forEach(l=>{ l.id=uid(); (l.extras||[]).forEach(r=>r.id=uid()); }); (d.extras||[]).forEach(r=>r.id=uid()); S.draft=d; Q=d; S.ui.editing=null; save(); go('cotizar'); renderEditor(); toast('Copia lista: revisa y guarda para asignar folio');
 }
 
 /* ---------------- document / PDF ---------------- */
@@ -1173,21 +1302,23 @@ function renderDoc(q){
   const rows = c.L.filter(x=>x.qty>0&&x.m2>0).map((x,i)=>{
     const ln=x.ln; const det=[];
     if(ln.color) det.push('Color: '+ln.color);
-    if(ln.fascia==='incluida') det.push('Fascia cuadrada');
-    det.push(...x.xdesc);
+    if(ln.line==='ST'||ln.line==='SD') det.push('Fascia cuadrada incluida');
     if(ln.mount && ln.mount!=='Interior') det.push('Montaje '+ln.mount.toLowerCase());
     if(ln.control) det.push('Mando '+ln.control.toLowerCase());
     if(ln.doble) det.push('Doble altura');
     if(ln.note) det.push(ln.note);
     const med = ln.mode==='m2'? `${f2(num(ln.m2))} m²/pza` : `${f2(num(ln.w))} × ${f2(num(ln.h))}`;
-    return `<tr><td>${i+1}</td><td>${esc(ln.area||'Ventana '+(i+1))}</td><td><div class="pm">${esc(LMAP[ln.line].name)} · ${esc(x.it?.model||'')}</div><div class="ps">${esc(det.join(' · '))}</div></td><td class="c">${med}</td><td class="c">${f2(x.m2u)}</td><td class="c">${x.qty}</td><td class="r">${money(x.price)}</td><td class="r">${money(x.amount+x.lx)}</td></tr>`;
+    return `<tr><td>${i+1}</td><td>${esc(ln.area||'Ventana '+(i+1))}</td><td><div class="pm">${esc(LMAP[ln.line].name)} · ${esc(x.it?.model||'')}</div><div class="ps">${esc(det.join(' · '))}</div></td><td class="c">${med}</td><td class="c">${f2(x.m2u)}</td><td class="c">${x.qty}</td><td class="r">${money(x.price)}</td><td class="r">${money(x.amount)}</td></tr>`+
+      x.xrows.filter(v=>v.amt||v.qty).map(v=>`<tr class="xs"><td></td><td></td><td class="xl" colspan="3">+ ${esc(v.label)}</td><td class="c">${f2(v.qty)} ${esc(v.unit)}</td><td class="r">${money(v.price)}</td><td class="r">${money(v.amt)}</td></tr>`).join('');
   }).join('');
+  const gen = c.G.filter(v=>v.amt||v.qty);
+  const genTbl = gen.length? `<h5 class="sec">Instalación, envío y extras</h5><table class="items"><thead><tr><th>#</th><th>Concepto</th><th class="c">Cantidad</th><th class="c">Unidad</th><th class="r">P. unitario</th><th class="r">Importe</th></tr></thead><tbody>${gen.map((v,i)=>`<tr><td>${i+1}</td><td>${esc(v.label)}</td><td class="c">${f2(v.qty)}</td><td class="c">${esc(v.unit)}</td><td class="r">${money(v.price)}</td><td class="r">${money(v.amt)}</td></tr>`).join('')}</tbody></table>`:'';
   const T=[];
-  T.push(['Subtotal productos', money(c.subProd)]);
+  T.push(['Persianas', money(c.prod)]);
   if(c.discount) T.push([`Descuento especial (${c.discPct}%)`, '−'+money(c.discount),'neg']);
+  if(c.extrasAmt) T.push(['Extras por ventana', money(c.extrasAmt)]);
   if(c.install) T.push(['Instalación', money(c.install)]);
-  if(c.shipping) T.push(['Envío', money(c.shipping)]);
-  if(c.other) T.push([esc(q.otherLabel||'Otro cargo'), money(c.other)]);
+  if(c.other) T.push(['Envío y extras', money(c.other)]);
   if(q.ivaMode==='mas'){ T.push(['Subtotal neto', money(c.base)]); T.push(['IVA 16%', money(c.iva)]); }
   else if(q.ivaMode==='incluido'){ T.push(['Subtotal sin IVA', money(c.net)]); T.push(['IVA 16% (incluido)', money(c.iva)]); }
   const payBlock = c.paid>0
@@ -1205,6 +1336,7 @@ function renderDoc(q){
     <div class="box"><h5>Atención comercial</h5><div class="kv"><b>Asesor:</b><span>${esc(q.asesor||'—')}</span>${(q.asesorPhone||q.asesorEmail)?`<b>Contacto:</b><span>${esc([q.asesorPhone,q.asesorEmail].filter(Boolean).join(' · '))}</span>`:''}<b>Vigencia:</b><span>${esc(q.validity)} días · hasta ${fd(vig)}</span><b>Estatus:</b><span>${esc(SMAP[q.stage].n)}</span><b>Moneda:</b><span>MXN</span></div></div>
   </div>
   <table class="items"><thead><tr><th>#</th><th>Ubicación</th><th>Producto / modelo</th><th class="c">Medidas (m)</th><th class="c">m²</th><th class="c">Cant.</th><th class="r">P. unit m²</th><th class="r">Importe</th></tr></thead><tbody>${rows||'<tr><td colspan="8" style="text-align:center;color:#999">Sin partidas</td></tr>'}</tbody></table>
+  ${genTbl}
   <div class="bottom">
     <div class="cond"><h5 style="margin:0 0 6px;font-family:Montserrat,Arial;font-size:9.5px;letter-spacing:.1em;color:#7a776f">CONDICIONES DE VENTA Y PAGO</h5><ul>
       <li><b>Anticipo:</b> ${c.antPct}% para iniciar fabricación; saldo al concluir la instalación.</li>

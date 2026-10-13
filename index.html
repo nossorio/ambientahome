@@ -136,6 +136,10 @@ textarea.in{min-height:70px;resize:vertical}
 .xadd-row select{max-width:420px;flex:1}
 .xempty{font-size:13px;color:var(--muted);padding:4px 2px}
 
+.fp{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:10px;background:var(--okbg);margin-bottom:10px;font-size:13.5px;cursor:pointer}
+.fp input{width:20px;height:20px;accent-color:#1c1c1c;flex:none;margin-top:1px}
+.fp .hint{color:#3f6b55}
+
 /* summary */
 .summary{position:sticky;top:76px}
 .sum-rows{display:flex;flex-direction:column}
@@ -320,6 +324,15 @@ table.mini td.r,table.mini th.r{text-align:right}
 .doc .sign{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:26px;text-align:center;font-size:10px;color:#7a776f;page-break-inside:avoid}
 .doc .sign div{border-top:1px solid #1c1c1c;padding-top:6px}
 .doc .sign b{display:block;color:#1c1c1c;font-size:10.5px}
+.doc .terms{page-break-before:always;break-before:page;padding-top:2px}
+.doc .terms .th{display:flex;gap:14px;align-items:center;border-bottom:2px solid #1c1c1c;padding-bottom:8px;margin-bottom:12px}
+.doc .terms .th img{height:40px}
+.doc .terms h3{font-family:'Montserrat',Arial,sans-serif;font-size:15px;font-weight:800;margin:0;letter-spacing:.01em}
+.doc .terms .th span{font-size:10px;color:#7a776f}
+.doc .terms ol{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:7px;font-size:10.8px;line-height:1.5;text-align:justify}
+.doc .terms ol li{page-break-inside:avoid}
+.doc .terms ol li::marker{font-weight:700;color:#7a776f}
+.doc .terms .sign{margin-top:34px}
 .doc .foot{margin-top:12px;padding-top:8px;border-top:1px solid #e4dfd5;display:flex;justify-content:space-between;gap:10px;font-size:9.5px;color:#7a776f}
 .doc .slogan{font-style:italic}
 .doc .paid{margin-top:8px;font-size:10px}
@@ -442,6 +455,7 @@ table.mini td.r,table.mini th.r{text-align:right}
           <div class="card-h"><h3>Instalación, envío y extras generales</h3><span class="hint" id="genXCount"></span></div>
           <div class="card-b">
             <p class="hint" style="margin:0 0 10px">La instalación se calcula sola con las piezas (1-3 pzas o 4+ pzas, doble altura). Puedes cambiar la cantidad o el precio, quitarla, y agregar todos los conceptos que necesites: envío, fascias, día y noche o un concepto libre.</p>
+            <label class="fp"><input type="checkbox" id="qFull"><span><b>El cliente adquiere todas las persianas y el panel japonés del proyecto</b><br><span class="hint">Instalación incluida sin costo: soportes, tornillería, herramientas y escalera de 6 pies. La doble altura y la escalera extensible se cobran aparte. Si es un proyecto parcial, desmarca para cobrar la instalación por pieza.</span></span></label>
             <div id="genX"></div>
             <div class="xadd-row">
               <select class="in" id="genXAdd"></select>
@@ -458,6 +472,7 @@ table.mini td.r,table.mini th.r{text-align:right}
             <label class="f"><span>Tel. / WhatsApp asesor</span><input class="in" data-adv="phone" inputmode="tel" placeholder="81 0000 0000"></label>
             <label class="f"><span>Correo asesor</span><input class="in" data-adv="email" inputmode="email" placeholder="asesor@ambientahome.mx"></label>
             <label class="f"><span>Teléfono del negocio</span><input class="in" data-s="phone" inputmode="tel" placeholder="81 0000 0000"></label>
+            <label class="f"><span>WhatsApp para comprobantes</span><input class="in" data-s="receiptPhone" inputmode="tel"></label>
             <label class="f"><span>Correo del negocio</span><input class="in" data-s="email" inputmode="email" placeholder="ventas@ambientahome.mx"></label>
             <label class="f span2 span-m"><span>Instagram / web</span><input class="in" data-s="social"></label>
             <label class="f"><span>Banco</span><input class="in" data-s="bankName" placeholder="Ej. BBVA"></label>
@@ -579,10 +594,14 @@ table.mini td.r,table.mini th.r{text-align:right}
           <label class="f"><span>Vigencia (días)</span><input class="in num" data-s="validity" inputmode="numeric"></label>
           <label class="f"><span>IVA por defecto</span><select class="in" data-s="ivaMode"><option value="mas">Precios + IVA 16%</option><option value="incluido">IVA incluido</option><option value="sin">Sin IVA</option></select></label>
           <label class="f"><span>Envío por defecto (costo) $ <em>0 = no agregar</em></span><input class="in num" data-s="shipping" inputmode="decimal"></label>
+          <label class="f"><span>Panel japonés máx. (días háb.)</span><input class="in num" data-s="panelDays" inputmode="numeric"></label>
+          <label class="f"><span>WhatsApp para comprobantes</span><input class="in" data-s="receiptPhone" inputmode="tel"></label>
           <label class="f"><span>Días para dar seguimiento</span><input class="in num" data-s="followDays" inputmode="numeric"></label>
           <label class="f span2 span-m"><span>Forma de pago</span><input class="in" data-s="payTerms"></label>
           <label class="f span2 span-m"><span>Garantía</span><input class="in" data-s="warranty"></label>
           <label class="f span-all"><span>Observaciones por defecto</span><textarea class="in" data-s="notes"></textarea></label>
+          <label class="f span-all"><span>Términos y condiciones (página 2 del PDF) <em>un párrafo por bloque · "Título: texto" pone el título en negritas · variables: {anticipo} {dias} {diasPanel} {telComprobante}</em></span><textarea class="in" data-s="terms" style="min-height:320px;font-size:14px"></textarea></label>
+          <div class="span-all"><button class="btn ghost sm" id="btnTermsReset">Restaurar términos originales</button></div>
         </div>
       </div>
       <div class="card">
@@ -712,13 +731,15 @@ const SMAP = Object.fromEntries(ALLST.map(s=>[s.k,s]));
 const sIdx = k => STAGES.findIndex(s=>s.k===k);
 const ORDER_FROM = sIdx('anticipo');
 
+const DEFAULT_TERMS = 'Tiempo de entrega: {dias} días hábiles en persianas a partir de que el pedido quede en firme (anticipo recibido). Panel japonés: tiempo máximo de entrega de {diasPanel} días hábiles a partir de que el pedido quede en firme.\n\nInstalación: el servicio de instalación está incluido en la presente cotización únicamente si se adquieren todas las persianas y el panel japonés del proyecto. Incluye soportes, tornillería, herramientas de instalación y escalera de 6 pies. No incluye escalera extensible ni trabajos en techo de doble altura, que se cotizan por separado.\n\nGarantía de instalación: 3 meses bajo condiciones normales de uso. Cubre cualquier problema relacionado con la colocación de las persianas, como soportes mal fijados, desalineación de la persiana, tornillería floja o dificultad para subir o bajar por ajuste incorrecto, siempre y cuando no exista manipulación de la persiana por el cliente o terceros, mal uso o daños externos.\n\nLa garantía no cubre: daños causados por mascotas, niños o el cliente; golpes o mal uso; manipulación por terceros; daños por humedad o filtraciones; cambios estructurales en el muro; cortes o rasgaduras en el lienzo.\n\nImportante: si nota algún detalle propio de la instalación, por favor no manipule la persiana, no intente solucionar el problema y no la desinstale; repórtelo con nosotros. En caso contrario, la garantía no será válida.\n\nForma de pago: para agendar el pedido se requiere el {anticipo}% de anticipo y el resto se liquida a la entrega. Se entrega comprobante del anticipo. La entrega e instalación de las persianas se realiza una vez liquidado en su totalidad el pedido.\n\nPagos por transferencia: el comprobante electrónico deberá enviarse por WhatsApp al {telComprobante} para su revisión y confirmación; una vez confirmado se procederá a la entrega e instalación.\n\nFacturación: en caso de requerir factura, el monto total de la cotización deberá ser liquidado previamente para proceder con la fabricación.\n\nCancelaciones: no hay cancelaciones, devoluciones ni cambios una vez realizado el pedido en firme. Es responsabilidad del cliente revisar detenidamente la cotización y mencionar sus dudas, si las hubiera, antes de autorizarla.';
 const DEFAULT_SETTINGS = {
   bizName:'Ambienta Home', tagline:'Persianas a la medida · Instalación técnica especializada',
   slogan:'Ambientes perfectos, privacidad total e instalación impecable.',
   phone:'', email:'', social:'@ambientahome.mx', city:'Monterrey, N.L.',
   advisors:null, bankName:'', bankHolder:'', bankClabe:'', bankAccount:'', markup:10, anticipoPct:50, delMin:7, delMax:10, validity:15, ivaMode:'mas', shipping:0, followDays:3,
   payTerms:'Transferencia bancaria / Efectivo / Tarjeta de crédito.',
-  warranty:'3 años en mecanismos y telas contra defectos de fabricación.',
+  warranty:'3 meses en instalación bajo condiciones normales de uso.', panelDays:15, receiptPhone:'81 2106 8515',
+  terms: DEFAULT_TERMS,
   notes:'Medidas definitivas tomadas en sitio por el técnico instalador. Requiere taquetes para tablaroca/concreto.',
   prefQ:'AH-', nextQ:1, prefO:'OV-', nextO:1
 };
@@ -737,6 +758,8 @@ function load(){
   const st=S.settings;
   if(!Array.isArray(st.advisors)) st.advisors = String(st.asesores||'Lic. Carlos Mendoza').split(',').map(n=>n.trim()).filter(Boolean).map(name=>({name,phone:'',email:''}));
   if(st.bank && !st.bankName && !st.bankClabe) { st.bankNote=st.bank; }
+  if(/3 años en mecanismos/.test(st.warranty||'')) st.warranty=DEFAULT_SETTINGS.warranty;
+  if(!String(st.terms||'').trim()) st.terms=DEFAULT_TERMS;
   priceExtras();
   S.quotes.forEach(migrateQ); if(S.draft) migrateQ(S.draft);
 }
@@ -799,9 +822,14 @@ function evalX(r, autoQty){
   const label = e? e.name : (r.name||'Concepto libre');
   return {r, k:r.k, label, unit: e? e.unit : (r.unit||'pza'), qty, qAuto, cost, price, mk, amt:r2(qty*price), costAmt:r2(qty*cost), auto:!!r.auto};
 }
+function hasPanel(q){ return (q.lines||[]).some(l=>(l.line==='PT'||l.line==='PB') && num(l.qty)>0); }
+function delivDays(q){ const min=num(q.delMin)||7, bmax=num(q.delMax)||10, pmax=num(S.settings.panelDays)||15, panel=hasPanel(q);
+  return {min, bmax, pmax, panel, max: panel? Math.max(bmax,pmax) : bmax}; }
+function delivText(q){ const d=delivDays(q); return `${d.min} a ${d.bmax} días hábiles en persianas`+(d.panel?`; panel japonés hasta ${d.pmax} días hábiles`:'')+', a partir de que el pedido quede en firme'; }
 function xOptLabel(k){ if(k==='libre') return 'Concepto libre (tú pones nombre y precio)'; const e=ext(k); return `${e.name} · ${money0(e.price)}/${e.unit}`; }
 function migrateQ(q){
-  if(!q || q._v>=2) return q;
+  if(!q) return q;
+  if(q._v>=2){ if(!(q._v>=3)){ if(q.fullProject===undefined) q.fullProject = !q.folio; q._v=3; } return q; }
   q.extras = Array.isArray(q.extras)? q.extras : [];
   q.installAuto = !(q.installMode==='none' || q.installMode==='manual');
   if(q.installMode==='manual' && num(q.installManual)) q.extras.push(Object.assign(newX('libre',1),{name:'Instalación (monto acordado)', unit:'servicio', price:String(num(q.installManual))}));
@@ -812,13 +840,13 @@ function migrateQ(q){
     if(ln.acc==='tapasDuo'||ln.acc==='soportesSky') ln.extras.push(newX(ln.acc));
     delete ln.fascia; delete ln.acc; });
   ['installMode','installManual','shipping','otherLabel','otherAmount'].forEach(k=>delete q[k]);
-  q._v=2; return q;
+  q._v=2; return migrateQ(q);
 }
 function newQuote(){
   const s=S.settings;
   return {id:uid(), folio:'', orderFolio:'', createdAt:'', date:today(), stage:'cotizada',
     client:{name:'',phone:'',email:'',address:'',city:'',source:'WhatsApp',type:'Residencial'},
-    lines:[newLine()], extras: num(s.shipping)? [Object.assign(newX('envio',1),{cost:String(num(s.shipping))})] : [], installAuto:true, _v:2,
+    lines:[newLine()], extras: num(s.shipping)? [Object.assign(newX('envio',1),{cost:String(num(s.shipping))})] : [], installAuto:true, fullProject:true, _v:3,
     discountPct:'', ivaMode:s.ivaMode, anticipoPct:s.anticipoPct, delMin:s.delMin, delMax:s.delMax, validity:s.validity,
     asesor:(s.advisors[0]||{}).name||'', asesorPhone:(s.advisors[0]||{}).phone||'', asesorEmail:(s.advisors[0]||{}).email||'', notes:s.notes, internal:'',
     payments:[], history:[], anticipoDate:'', installDate:'', nextDate:'', nextNote:'', lostReason:''};
@@ -861,6 +889,7 @@ function calc(q){
     if(dbl>0) autoRows.push({id:'auto-dbl', k:'instDoble', qty:String(dbl), cost:'', price:'', auto:true});
   }
   const G = autoRows.concat(q.extras||[]).map(r=>evalX(r,0));
+  if(q.fullProject!==false) G.forEach(v=>{ if(v.k==='inst13'||v.k==='inst4'){ v.incl=true; v.price=0; v.amt=0; } });
   const install = r2(G.filter(v=>INST_K.includes(v.k)).reduce((a,v)=>a+v.amt,0));
   const installCost = r2(G.filter(v=>INST_K.includes(v.k)).reduce((a,v)=>a+v.costAmt,0));
   const genAmt = r2(G.reduce((a,v)=>a+v.amt,0)), genCost = r2(G.reduce((a,v)=>a+v.costAmt,0));
@@ -1021,8 +1050,9 @@ function xRowsHTML(evs){
         : `<div class="xname"><span>${esc(v.label)}${v.auto?' <span class="xbadge">auto</span>':''}</span><small>${esc(v.unit)} · costo ${money0(ext(v.k).cost)} + ${num(v.mk)}%</small></div>`}</div>
       <label class="f"><span>Cant. (${esc(v.unit)})${v.qAuto&&!v.auto?' · auto':''}</span><input class="in num" data-xf="qty" value="${esc(v.auto? v.qty : r.qty)}" placeholder="${f2(v.qty)}" inputmode="decimal"></label>
       <label class="f"><span>Costo u.</span><input class="in num" data-xf="cost" value="${esc(r.cost)}" placeholder="${f2(v.cost)}" inputmode="decimal"></label>
-      <label class="f"><span>Precio u. cliente</span><input class="in num" data-xf="price" value="${esc(r.price)}" placeholder="${f2(v.price)}" inputmode="decimal"></label>
-      <div class="xamt" data-xamt>${money(v.amt)}</div>
+      ${v.incl? `<label class="f"><span>Precio u. cliente</span><input class="in" value="Incluida" readonly tabindex="-1"></label>`
+        : `<label class="f"><span>Precio u. cliente</span><input class="in num" data-xf="price" value="${esc(r.price)}" placeholder="${f2(v.price)}" inputmode="decimal"></label>`}
+      <div class="xamt" data-xamt>${v.incl?'Incluida':money(v.amt)}</div>
       <button type="button" class="btn ghost icon sm xdel" data-xdel aria-label="Quitar extra">✕</button>
     </div>`; }).join('')}</div>`;
 }
@@ -1049,6 +1079,8 @@ function renderGenX(c){
   $('#genX').innerHTML = xRowsHTML(c.G);
   $('#genXCount').textContent = c.G.length? `${c.G.length} concepto${c.G.length!==1?'s':''} · ${money(c.genAmt)}` : '';
   $('#btnInstAuto').classList.toggle('hidden', Q.installAuto!==false);
+  $('#qFull').checked = Q.fullProject!==false;
+  $('#qFull').onchange = e=>{ Q.fullProject = e.target.checked; touch(true); renderGenX(); refreshTotals(); toast(Q.fullProject? 'Instalación incluida (proyecto completo)' : 'Instalación cobrada por pieza'); };
   $('#genXAdd').innerHTML = `<option value="">+ Agregar extra o servicio…</option>`+GEN_X.map(k=>`<option value="${k}">${esc(xOptLabel(k))}</option>`).join('');
   bindXList($('#genX'), ()=>Q.extras, ()=>{ renderGenX(); refreshTotals(); }, id=>{ const m=materializeInstall(); return m[id].id; });
 }
@@ -1067,7 +1099,7 @@ function refreshTotals(){
   renderSummary(c);
 }
 function syncXRow(scope,v){ const row=scope.querySelector(`[data-xid="${CSS.escape(v.r.id)}"]`); if(!row) return;
-  row.querySelector('[data-xamt]').textContent=money(v.amt);
+  row.querySelector('[data-xamt]').textContent=v.incl?'Incluida':money(v.amt);
   const q=row.querySelector('[data-xf="qty"]'), co=row.querySelector('[data-xf="cost"]'), p=row.querySelector('[data-xf="price"]');
   if(q) q.placeholder=f2(v.qty); if(co) co.placeholder=f2(v.cost); if(p) p.placeholder=f2(v.price); }
 function refreshLine(el,i){
@@ -1082,7 +1114,7 @@ function renderSummary(c){
   rows.push(['Persianas ('+f2(c.m2Total)+' m²)', money(c.prod)]);
   if(c.discount) rows.push([`Descuento persianas (${c.discPct}%)`, '−'+money(c.discount),'neg']);
   if(c.extrasAmt) rows.push([`Extras por ventana <span class="hint">· ${c.L.reduce((a,x)=>a+x.xrows.length,0)} concepto(s)</span>`, money(c.extrasAmt)]);
-  rows.push([`Instalación${Q.installAuto!==false?' <span class="hint">· automática</span>':''}`, money(c.install)]);
+  rows.push([`Instalación <span class="hint">· ${Q.fullProject!==false?'incluida (proyecto completo)'+(c.install?' + doble altura':''):(Q.installAuto!==false?'automática por pieza':'manual')}</span>`, money(c.install)]);
   if(c.other) rows.push([`Envío y extras generales <span class="hint">· ${c.G.filter(v=>!INST_K.includes(v.k)).length} concepto(s)</span>`, money(c.other)]);
   if(Q.ivaMode==='mas'){ rows.push(['Subtotal', money(c.base),'div']); rows.push(['IVA 16%', money(c.iva)]); }
   else if(Q.ivaMode==='incluido'){ rows.push(['Subtotal sin IVA', money(c.net),'div']); rows.push(['IVA 16% (incluido)', money(c.iva)]); }
@@ -1091,10 +1123,10 @@ function renderSummary(c){
   $('#sumPieces').textContent = `${c.pieces} pza${c.pieces!==1?'s':''} · ${f2(c.m2Total)} m²`;
   if(c.paid>0){ $('#lblAnt').textContent='Pagado'; $('#sumAnt').textContent=money(c.paid); $('#sumSaldo').textContent=money(c.balance); }
   else { $('#lblAnt').textContent=`Anticipo ${c.antPct}%`; $('#sumAnt').textContent=money(c.anticipo); $('#sumSaldo').textContent=money(c.saldo); }
-  const dmin=num(Q.delMin), dmax=num(Q.delMax);
+  const {min:dmin, max:dmax}=delivDays(Q);
   $('#sumDeliv').innerHTML = Q.anticipoDate
     ? `Anticipo ${fd(Q.anticipoDate)} → entrega estimada <b>${fdl(addBiz(Q.anticipoDate,dmin))} – ${fdl(addBiz(Q.anticipoDate,dmax))}</b>`
-    : `Entrega <b>${dmin} a ${dmax} días hábiles</b> tras recibir el anticipo.<br><span style="opacity:.8">Si pagan hoy: ${fdl(addBiz(today(),dmin))} – ${fdl(addBiz(today(),dmax))}</span>`;
+    : `Entrega <b>${esc(delivText(Q))}</b>.<br><span style="opacity:.8">Si pagan hoy: ${fdl(addBiz(today(),dmin))} – ${fdl(addBiz(today(),dmax))}</span>`;
   $('#sumCost').textContent = money(c.cost);
   $('#sumProfit').textContent = money(c.profit);
   const mp=Math.max(0,Math.min(1,c.marginPct)); $('#sumMBar').style.width=(mp*100).toFixed(0)+'%';
@@ -1137,7 +1169,7 @@ function openPayment(q, isAnticipo, targetStage){
   const c=calc(q);
   const amt = isAnticipo? c.anticipo : c.balance;
   modal(`${isAnticipo?'Registrar anticipo':'Registrar pago'} · ${esc(q.folio)}`, `
-    ${isAnticipo?`<div class="warn info">Al registrar el anticipo la cotización se convierte en <b>&nbsp;Orden de venta&nbsp;</b> con folio consecutivo y arranca el tiempo de entrega (${esc(q.delMin)}–${esc(q.delMax)} días hábiles).</div>`:''}
+    ${isAnticipo?`<div class="warn info">Al registrar el anticipo la cotización se convierte en <b>&nbsp;Orden de venta&nbsp;</b> con folio consecutivo y arranca el tiempo de entrega (${esc(delivText(q))}).</div>`:''}
     <div class="grid g2">
       <label class="f"><span>Fecha</span><input class="in" type="date" id="pDate" value="${today()}"></label>
       <label class="f"><span>Monto $</span><input class="in num" id="pAmt" inputmode="decimal" value="${amt.toFixed(2)}"></label>
@@ -1234,7 +1266,7 @@ let drawerQ=null;
 function openDrawer(id){
   const q=S.quotes.find(x=>x.id===id); if(!q) return; drawerQ=q; const c=calc(q); const si=sIdx(q.stage);
   const stDate = k => { const h=[...q.history].reverse().find(h=>h.stage===k); return h? fd(stampDay(h.at)):''; };
-  const dmin=num(q.delMin), dmax=num(q.delMax);
+  const {min:dmin, max:dmax}=delivDays(q);
   $('#drawerIn').innerHTML = `
     <div class="drawer-h"><button class="btn ghost icon sm" data-close aria-label="Cerrar">✕</button><div style="min-width:0"><div style="font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(q.client.name||'—')}</div><div class="hint">${esc(q.folio)}${q.orderFolio?' · Orden '+esc(q.orderFolio):''}</div></div><span class="sp"></span><b style="font-family:var(--head)">${money(c.total)}</b></div>
     <div class="drawer-b">
@@ -1298,7 +1330,7 @@ function docTitle(q){ return sIdx(q.stage)>=ORDER_FROM? 'ORDEN DE VENTA' : 'COTI
 function renderDoc(q){
   const s=S.settings, c=calc(q); const isOrder=sIdx(q.stage)>=ORDER_FROM;
   const vig = addDays(q.date, num(q.validity)||15);
-  const dmin=num(q.delMin), dmax=num(q.delMax);
+  const {min:dmin, max:dmax}=delivDays(q);
   const rows = c.L.filter(x=>x.qty>0&&x.m2>0).map((x,i)=>{
     const ln=x.ln; const det=[];
     if(ln.color) det.push('Color: '+ln.color);
@@ -1312,22 +1344,24 @@ function renderDoc(q){
       x.xrows.filter(v=>v.amt||v.qty).map(v=>`<tr class="xs"><td></td><td></td><td class="xl" colspan="3">+ ${esc(v.label)}</td><td class="c">${f2(v.qty)} ${esc(v.unit)}</td><td class="r">${money(v.price)}</td><td class="r">${money(v.amt)}</td></tr>`).join('');
   }).join('');
   const gen = c.G.filter(v=>v.amt||v.qty);
-  const genTbl = gen.length? `<h5 class="sec">Instalación, envío y extras</h5><table class="items"><thead><tr><th>#</th><th>Concepto</th><th class="c">Cantidad</th><th class="c">Unidad</th><th class="r">P. unitario</th><th class="r">Importe</th></tr></thead><tbody>${gen.map((v,i)=>`<tr><td>${i+1}</td><td>${esc(v.label)}</td><td class="c">${f2(v.qty)}</td><td class="c">${esc(v.unit)}</td><td class="r">${money(v.price)}</td><td class="r">${money(v.amt)}</td></tr>`).join('')}</tbody></table>`:'';
+  const genTbl = gen.length? `<h5 class="sec">Instalación, envío y extras</h5><table class="items"><thead><tr><th>#</th><th>Concepto</th><th class="c">Cantidad</th><th class="c">Unidad</th><th class="r">P. unitario</th><th class="r">Importe</th></tr></thead><tbody>${gen.map((v,i)=>`<tr><td>${i+1}</td><td>${esc(v.label)}${v.incl?' <span class="ps">· incluida por adquirir el proyecto completo</span>':''}</td><td class="c">${f2(v.qty)}</td><td class="c">${esc(v.unit)}</td><td class="r">${v.incl?'Incluida':money(v.price)}</td><td class="r">${v.incl?'Incluida':money(v.amt)}</td></tr>`).join('')}</tbody></table>`:'';
+  const inclInst = gen.some(v=>v.incl);
   const T=[];
   T.push(['Persianas', money(c.prod)]);
   if(c.discount) T.push([`Descuento especial (${c.discPct}%)`, '−'+money(c.discount),'neg']);
   if(c.extrasAmt) T.push(['Extras por ventana', money(c.extrasAmt)]);
-  if(c.install) T.push(['Instalación', money(c.install)]);
+  if(inclInst && !c.install) T.push(['Instalación', 'Incluida']);
+  else if(c.install) T.push([inclInst?'Instalación (doble altura)':'Instalación', money(c.install)]);
   if(c.other) T.push(['Envío y extras', money(c.other)]);
   if(q.ivaMode==='mas'){ T.push(['Subtotal neto', money(c.base)]); T.push(['IVA 16%', money(c.iva)]); }
   else if(q.ivaMode==='incluido'){ T.push(['Subtotal sin IVA', money(c.net)]); T.push(['IVA 16% (incluido)', money(c.iva)]); }
   const payBlock = c.paid>0
     ? `<div class="tr ant"><span>Pagado a la fecha</span><span>${money(c.paid)}</span></div><div class="tr sal"><span>Saldo pendiente</span><span>${money(c.balance)}</span></div>`
-    : `<div class="tr ant"><span>Anticipo requerido (${c.antPct}%)</span><span>${money(c.anticipo)}</span></div><div class="tr sal"><span>Saldo contra instalación</span><span>${money(c.saldo)}</span></div>`;
+    : `<div class="tr ant"><span>Anticipo requerido (${c.antPct}%)</span><span>${money(c.anticipo)}</span></div><div class="tr sal"><span>Saldo a la entrega</span><span>${money(c.saldo)}</span></div>`;
   const paysTbl = q.payments.length? `<div class="paid"><b>Pagos recibidos</b><table>${q.payments.map(p=>`<tr><td>${fd(p.date)}</td><td>${esc(p.concept)} · ${esc(p.method)}</td><td style="text-align:right">${money(p.amount)}</td></tr>`).join('')}</table></div>`:'';
   const deliv = q.anticipoDate
-    ? `<div class="deliv-d"><div><b>Anticipo recibido el ${fdl(q.anticipoDate)}.</b> Fecha estimada de entrega e instalación: <b>${fdl(addBiz(q.anticipoDate,dmin))} al ${fdl(addBiz(q.anticipoDate,dmax))}</b> (${dmin} a ${dmax} días hábiles).${q.installDate?` Instalación agendada: <b>${fdl(q.installDate)}</b>.`:''}</div></div>`
-    : `<div class="deliv-d"><div><b>Tiempo de entrega: ${dmin} a ${dmax} días hábiles</b> a partir de la confirmación del anticipo. Ejemplo: con anticipo hoy (${fdl(today())}), entrega estimada del ${fdl(addBiz(today(),dmin))} al ${fdl(addBiz(today(),dmax))}.</div></div>`;
+    ? `<div class="deliv-d"><div><b>Anticipo recibido el ${fdl(q.anticipoDate)}.</b> Fecha estimada de entrega e instalación: <b>${fdl(addBiz(q.anticipoDate,dmin))} al ${fdl(addBiz(q.anticipoDate,dmax))}</b> (${esc(delivText(q))}).${q.installDate?` Instalación agendada: <b>${fdl(q.installDate)}</b>.`:''}</div></div>`
+    : `<div class="deliv-d"><div><b>Tiempo de entrega: ${esc(delivText(q))}.</b> Ejemplo: con pedido en firme hoy (${fdl(today())}), entrega estimada del ${fdl(addBiz(today(),dmin))} al ${fdl(addBiz(today(),dmax))}.</div></div>`;
   return `
   <div class="dh"><img src="${LOGO}" alt="Ambienta Home"><div class="tt"><h2>${docTitle(q)}</h2><div class="tag">${esc(s.tagline)}</div>
     <div class="fol"><span>FOLIO <b>${esc(q.folio||'BORRADOR')}</b></span>${q.orderFolio?`<span class="ov">ORDEN <b>${esc(q.orderFolio)}</b></span>`:''}<span>FECHA <b>${fd(q.date)}</b></span></div></div></div>
@@ -1339,21 +1373,38 @@ function renderDoc(q){
   ${genTbl}
   <div class="bottom">
     <div class="cond"><h5 style="margin:0 0 6px;font-family:Montserrat,Arial;font-size:9.5px;letter-spacing:.1em;color:#7a776f">CONDICIONES DE VENTA Y PAGO</h5><ul>
-      <li><b>Anticipo:</b> ${c.antPct}% para iniciar fabricación; saldo al concluir la instalación.</li>
-      <li><b>Entrega:</b> ${dmin} a ${dmax} días hábiles tras confirmación de anticipo.</li>
-      <li><b>Forma de pago:</b> ${esc(s.payTerms)}</li>
+      <li><b>Pago:</b> ${c.antPct}% de anticipo para agendar el pedido; el resto se liquida a la entrega. La entrega e instalación se realizan una vez liquidado el total.</li>
+      <li><b>Entrega:</b> ${esc(delivText(q))}.</li>
+      <li><b>Instalación:</b> ${q.fullProject!==false? 'incluida por adquirir todas las persianas y el panel japonés del proyecto (soportes, tornillería, herramientas y escalera de 6 pies). No incluye escalera extensible ni doble altura.' : 'cotizada por pieza (no se adquiere el proyecto completo).'}</li>
       <li><b>Garantía:</b> ${esc(s.warranty)}</li>
+      <li><b>Forma de pago:</b> ${esc(s.payTerms)}${s.receiptPhone?` Comprobantes de transferencia por WhatsApp al <b>${esc(s.receiptPhone)}</b>.`:''}</li>
+      <li><b>Factura:</b> si se requiere, el total se liquida antes de iniciar la fabricación.</li>
       ${q.notes?`<li><b>Observaciones:</b> ${esc(q.notes)}</li>`:''}
       <li>Medida mínima de fabricación 1 m de ancho y 1 m de alto; máximo 3.00 m.</li></ul>
       ${bankBox(q)}
-      <div class="note">* Precios sujetos a cambio sin previo aviso tras vencer la vigencia (${fd(vig)}). Productos fabricados a la medida: no aplican cambios ni devoluciones una vez iniciada la fabricación.</div>
+      <div class="note"><b>No hay cancelaciones, devoluciones ni cambios una vez realizado el pedido en firme.</b> Precios sujetos a cambio tras vencer la vigencia (${fd(vig)}). Términos y condiciones completos en la página 2.</div>
     </div>
     <div class="tot">${T.map(r=>`<div class="tr ${r[2]||''}"><span>${r[0]}</span><span>${r[1]}</span></div>`).join('')}
       <div class="tn"><span>TOTAL NETO</span><b>${money(c.total)} MXN</b></div>${payBlock}${paysTbl}</div>
   </div>
   ${deliv}
-  <div class="sign"><div><b>Firma de conformidad del cliente</b>Acepto cotización, especificaciones y términos</div><div><b>${esc(q.asesor||'Asesor comercial')} · ${esc(s.bizName)}</b>Atención y seguimiento personalizado</div></div>
-  <div class="foot"><span class="slogan">${esc(s.slogan)}</span><span>${esc([s.phone&&('Tel. '+s.phone),s.email,s.social,s.city].filter(Boolean).join(' · '))}</span></div>`;
+  <div class="foot"><span class="slogan">${esc(s.slogan)}</span><span>${esc([s.phone&&('Tel. '+s.phone),s.email,s.social,s.city].filter(Boolean).join(' · '))}</span></div>
+  ${termsPage(q,c)}`;
+}
+function termsText(q,c){
+  const s=S.settings, d=delivDays(q);
+  return String(s.terms||DEFAULT_TERMS).replace(/\{anticipo\}/g, c.antPct).replace(/\{dias\}/g, `${d.min} a ${d.bmax}`).replace(/\{diasPanel\}/g, d.pmax)
+    .replace(/\{telComprobante\}/g, s.receiptPhone||s.phone||'nuestro WhatsApp').replace(/\{negocio\}/g, s.bizName);
+}
+function termsPage(q,c){
+  const s=S.settings;
+  const paras = termsText(q,c).split(/\n\s*\n/).map(p=>p.trim()).filter(Boolean).map(p=>{ const m=p.match(/^([^:\n]{2,60}):\s*([\s\S]*)$/); return m? `<li><b>${esc(m[1])}:</b> ${esc(m[2])}</li>` : `<li>${esc(p)}</li>`; }).join('');
+  return `<div class="terms">
+    <div class="th"><img src="${LOGO}" alt=""><div><h3>Términos y condiciones de venta, instalación y garantía</h3><span>${docTitle(q)==='COTIZACIÓN'?'Cotización':'Orden de venta'} ${esc(q.orderFolio||q.folio||'')} · ${esc(q.client.name||'')} · ${fd(q.date)}</span></div></div>
+    <ol>${paras}</ol>
+    <div class="sign"><div><b>Firma de conformidad del cliente</b>Acepto cotización, especificaciones y términos y condiciones</div><div><b>${esc(q.asesor||'Asesor comercial')} · ${esc(s.bizName)}</b>${esc([q.asesorPhone,q.asesorEmail].filter(Boolean).join(' · ')||'Atención y seguimiento personalizado')}</div></div>
+    <div class="foot"><span class="slogan">${esc(s.slogan)}</span><span>${esc([s.phone&&('Tel. '+s.phone),s.email,s.social,s.city].filter(Boolean).join(' · '))}</span></div>
+  </div>`;
 }
 function bankRows(){ const s=S.settings; return [['Banco',s.bankName],['Titular',s.bankHolder],['CLABE',s.bankClabe],['Cuenta / tarjeta',s.bankAccount]].filter(r=>String(r[1]||'').trim()); }
 function bankBox(q){ const r=bankRows(); if(!r.length && !S.settings.bankNote) return '';
@@ -1375,7 +1426,7 @@ async function openPreview(q){
   try{
     await waitLib(); if(document.fonts) await document.fonts.ready; window.scrollTo(0,0); $('#pvBody').scrollTop=0;
     const opt={margin:[8,8,10,8], filename:pdfName, image:{type:'jpeg',quality:0.96}, html2canvas:{scale:2,useCORS:true,backgroundColor:'#ffffff',logging:false,scrollX:0,scrollY:0},
-      jsPDF:{unit:'mm',format:'letter',orientation:'portrait'}, pagebreak:{mode:['css','legacy'],avoid:['tr','.bottom','.sign','.deliv-d']}};
+      jsPDF:{unit:'mm',format:'letter',orientation:'portrait'}, pagebreak:{mode:['css','legacy'],before:['.terms'],avoid:['tr','.bottom','.sign','.deliv-d','.terms li']}};
     pdfBlob = await html2pdf().set(opt).from($('#pvPage')).outputPdf('blob');
     $('#pvStatus').textContent = 'Listo · '+pdfName; ['#pvShare','#pvDown','#pvWa','#pvMail'].forEach(id=>$(id).disabled=false);
   }catch(e){ console.error(e); $('#pvStatus').textContent='No se pudo generar el PDF aquí. Usa "Imprimir" → Guardar como PDF.'; }
@@ -1454,7 +1505,16 @@ function shareText(q){
   return `Hola ${first}, te comparto ${isOrder?'tu orden de venta':'tu cotización'} ${isOrder?q.orderFolio:q.folio} de ${s.bizName}. Te adjunto el PDF con el detalle.\n\n`+
     `• ${c.pieces} persiana${c.pieces!==1?'s':''} (${f2(c.m2Total)} m²)\n• Total: ${money(c.total)} MXN${q.ivaMode==='mas'?' IVA incluido':''}\n`+
     (c.paid>0? `• Pagado: ${money(c.paid)} · Saldo: ${money(c.balance)}\n` : `• Anticipo (${c.antPct}%): ${money(c.anticipo)}\n`)+
-    `• Entrega: ${q.delMin} a ${q.delMax} días hábiles tras anticipo\n`+(isOrder?'':`• Vigencia: hasta ${fd(addDays(q.date,num(q.validity)||15))}\n`)+
+    (isOrder?'':`• Vigencia: hasta ${fd(addDays(q.date,num(q.validity)||15))}\n`)+
+    `\nCondiciones principales:\n`+
+    `• Pago: ${c.antPct}% de anticipo para agendar el pedido; el resto se liquida a la entrega. Entregamos e instalamos una vez liquidado el total.\n`+
+    `• Entrega: ${delivText(q)}.\n`+
+    (q.fullProject!==false? `• Instalación incluida por adquirir todo el proyecto (soportes, tornillería, herramientas y escalera de 6 pies; no incluye escalera extensible ni doble altura).\n` : `• Instalación cotizada por pieza.\n`)+
+    `• Garantía de instalación: 3 meses bajo condiciones normales de uso.\n`+
+    (s.receiptPhone? `• Pagos por transferencia: envía tu comprobante por WhatsApp al ${s.receiptPhone}.\n` : '')+
+    `• Si requieres factura, el total se liquida antes de iniciar la fabricación.\n`+
+    `• No hay cancelaciones, devoluciones ni cambios una vez realizado el pedido en firme. Te pedimos revisar la cotización y compartirnos tus dudas antes de autorizarla.\n`+
+    `Los términos y condiciones completos vienen en la página 2 del PDF.\n`+
     (bankRows().length && !isOrder? `\nPara tu anticipo:\n${bankRows().map(r=>`${r[0]}: ${r[1]}`).join('\n')}\nReferencia: ${q.folio}\n` : '')+
     `\n${q.asesor||''}${q.asesorPhone?' · '+q.asesorPhone:''}\n${s.slogan}`;
 }
@@ -1493,6 +1553,7 @@ function renderSettings(){
   $('#storageInfo').textContent = `${S.quotes.length} folio(s) guardado(s) en este dispositivo · ${(bytes/1024).toFixed(0)} KB${storageOK?'':' · ⚠ el navegador no está guardando (modo privado)'}`;
 }
 function fillAsesores(){ $('#dlAsesor').innerHTML=(S.settings.advisors||[]).map(a=>`<option>${esc(a.name)}</option>`).join(''); }
+$('#btnTermsReset').onclick=()=>{ if(!confirm('¿Restaurar el texto original de términos y condiciones?')) return; S.settings.terms=DEFAULT_TERMS; save(); renderSettings(); toast('Términos restaurados'); };
 $('#btnAddAdv').onclick=()=>{ S.settings.advisors.push({name:'Nuevo asesor',phone:'',email:''}); save(); renderSettings(); };
 $('#btnMkAll').onclick=()=>{ const m=num(S.settings.markup); S.extras.forEach(e=>e.mk=m); priceExtras(); save(); renderSettings(); toast(`${m}% aplicado a todos los extras y servicios`); };
 $('#btnExport').onclick=()=>{ saveNow(); download(new Blob([JSON.stringify(S,null,1)],{type:'application/json'}), `AmbientaHome_respaldo_${today()}.json`); };
@@ -1504,7 +1565,7 @@ $('#btnDemo').onclick=()=>seedDemo();
 /* ---------------- CSV export ---------------- */
 $('#btnCSV').onclick=()=>{
   const H=['Folio','Orden','Fecha','Cliente','Teléfono','Correo','Ciudad','Tipo','Origen','Asesor','Etapa','Piezas','m2','Subtotal','IVA','Total','Anticipo req.','Pagado','Saldo','Fecha anticipo','Entrega estimada (máx.)','Instalación','Próximo seguimiento','Acción','Utilidad bruta','Margen %','Motivo pérdida'];
-  const rows=S.quotes.map(q=>{ const c=calc(q); return [q.folio,q.orderFolio,q.date,q.client.name,q.client.phone,q.client.email,q.client.city,q.client.type,q.client.source,q.asesor,SMAP[q.stage].n,c.pieces,c.m2Total,c.net,c.iva,c.total,c.anticipo,c.paid,c.balance,q.anticipoDate,q.anticipoDate?addBiz(q.anticipoDate,num(q.delMax)):'',q.installDate,q.nextDate,q.nextNote,c.profit,(c.marginPct*100).toFixed(1),q.lostReason]; });
+  const rows=S.quotes.map(q=>{ const c=calc(q); return [q.folio,q.orderFolio,q.date,q.client.name,q.client.phone,q.client.email,q.client.city,q.client.type,q.client.source,q.asesor,SMAP[q.stage].n,c.pieces,c.m2Total,c.net,c.iva,c.total,c.anticipo,c.paid,c.balance,q.anticipoDate,q.anticipoDate?addBiz(q.anticipoDate,delivDays(q).max):'',q.installDate,q.nextDate,q.nextNote,c.profit,(c.marginPct*100).toFixed(1),q.lostReason]; });
   const csv='﻿'+[H,...rows].map(r=>r.map(v=>{ v=String(v??''); return /[",\n;]/.test(v)? '"'+v.replace(/"/g,'""')+'"':v; }).join(',')).join('\n');
   download(new Blob([csv],{type:'text/csv;charset=utf-8'}),`AmbientaHome_pedidos_${today()}.csv`);
 };
